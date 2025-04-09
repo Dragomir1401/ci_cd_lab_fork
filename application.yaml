@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: go-simple-webserver
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:Dragomir1401/ci_cd_lab_fork.git
+    targetRevision: HEAD
+    path: manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
