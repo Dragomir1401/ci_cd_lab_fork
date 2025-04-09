@@ -1,3 +1,11 @@
+name: Build CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
   build:
     # Specify the OS for the runner
     runs-on: ubuntu-latest
@@ -37,3 +45,4 @@
       # Step 5: Push the Docker image to GitHub Container Registry
       - name: Push Docker image
         run: docker push ghcr.io/${{ github.repository }}:latest
+
